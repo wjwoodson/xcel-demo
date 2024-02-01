@@ -1,0 +1,52 @@
+{% extends "base.html.jinja" %}
+{% block content %}
+    <div style="border: 1px #bbb; border-style: solid; padding: 10px; margin-bottom: 10px">
+    {% if flask_login.current_user.is_authenticated %}
+        <b>You are logged in as:</b> {{flask_login.current_user.id}}<br />
+        {% if message %}
+        <b style="background-color:powderblue;">Your Xcelerate Awards Membership Balance:</b> {{ message }}<br />
+        {% endif %}
+        <a href="/logout">Log Out</a><br />
+    {% else %}
+        <b>You are not logged in.</b><br />
+        <a href="/login">Log In</a><br />
+        <a href="/register">Register Account</a><br />
+    {% endif %}
+    </div>
+    <div>
+        <h2><img src="/static/xcelerate.png" width=50px> Xcelerate Awards Club <img src="/static/xcelerate.png" width=50px></h2>
+    {% if not err %}
+        <b>$4 Fare Flash Sale!</b><br /><br />
+        <form action='checkout' method='POST'>
+            Departing From: <select id="from" name="from">
+                <option value="ATL">ATL</option>
+                <option value="BOS">BOS</option>
+                <option value="DEN" selected>DEN</option>
+                <option value="DFW">DFW</option>
+                <option value="JFK">JFK</option>
+                <option value="LAX">LAX</option>
+                <option value="SFO">SFO</option>
+                <option value="YYZ">YYZ</option>
+            </select><br />
+            Flying To: <select id="to" name="to">
+                <option value="ATL">ATL</option>
+                <option value="BOS">BOS</option>
+                <option value="DEN">DEN</option>
+                <option value="DFW">DFW</option>
+                <option value="JFK">JFK</option>
+                <option value="LAX" selected>LAX</option>
+                <option value="SFO">SFO</option>
+                <option value="YYZ">YYZ</option>
+            </select><br />
+            <input type='submit' name='submit'/>
+        </form><br />
+        {% if booksuccessful %}
+            <b style="background-color:powderblue;">Successfully booked ticket:</b> {{ booksuccessful }}<br />
+            <img src="/static/xcel1.png" width=300px><br />
+        {% endif %}
+        <a href="/members">Return to Xcelerate Awards Club Home<a/><br />
+    {% else %}
+        <b style="background-color:tomato;">{{ err }}</b><br />
+    {% endif %}
+    </div>
+{% endblock %}

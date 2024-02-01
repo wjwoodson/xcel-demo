@@ -1,0 +1,34 @@
+{% extends "base.html.jinja" %}
+{% block content %}
+    <div style="border: 1px #bbb; border-style: solid; padding: 10px; margin-bottom: 10px">
+
+    {% if title == 'login' %}
+            <b>Login Form</b><br /><br />
+            <form action='login' method='POST'>
+                <input type='text' name='email' id='email' placeholder='email'/>
+                <input type='password' name='password' id='password' placeholder='password'/>
+                <input type='submit' name='submit'/>
+            </form><br />
+            {% if err %}
+                <b style="background-color:tomato;">{{ err }}</b><br />
+            {% endif %}
+            <a href="/register">Register Account</a><br />
+
+    {% elif title == 'register' %}
+            <b>Registration Form</b><br /><br />
+            <form action='register' method='POST'>
+                <input type='text' name='email' id='email' placeholder='email'/>
+                <input type='password' name='password' id='password' placeholder='password'/>
+                <input type='submit' name='submit'/>
+            </form><br />
+            {% if err %}
+                <b style="background-color:tomato;">{{ err }}</b><br />
+            {% endif %}
+            {% if signupemail %}
+                <b style="background-color:powderblue;">created new user:</b> {{ signupemail }}<br />
+            {% endif %}
+            <a href="/login">Log In</a><br />
+
+    {% endif %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends "base.html.jinja" %}
+{% block content %}
+    <div style="border: 1px #bbb; border-style: solid; padding: 10px; margin-bottom: 10px">
+    {% if flask_login.current_user.is_authenticated %}
+        <b>You are logged in as:</b> {{flask_login.current_user.id}}<br />
+        <a href="/logout">Log Out</a><br />
+        <a href="/members">Go to Xcelerate Awards Club Home</a><br />
+    {% else %}
+        <b>You are not logged in.</b><br />
+        <a href="/login">Log In</a><br />
+        <a href="/register">Register Account</a><br />
+    {% endif %}
+    </div>
+    <div>
+    <h2>About Xcel Airways</h2>
+    <p><b>Xcel Airways</b> is a leading ultra-low-cost carrier dedicated to revolutionizing the travel industry with affordable fares, exceptional service, and unparalleled convenience. With a commitment to delivering value-driven travel solutions and an unwavering focus on customer satisfaction, Xcel Airways continues to redefine the way the world travels.</p>
+    </div>
+    <div>
+        <h2>News</h2>
+        <h3>Xcel Airways Unveils Groundbreaking $4 Fare Flash Sale for Xcelerate Awards Club Members</h3>
+        <p><i>Denver, February 1 2024</i> - <b>Xcel Airways, the pioneering force in ultra-low-cost air travel, is thrilled to announce an unprecedented opportunity for travelers to soar to new heights with our exclusive $4 Fare Flash Sale.</b> This exciting promotion is exclusively available to new members joining our esteemed Xcelerate Awards Club, exemplifying our commitment to providing unparalleled value and unmatched benefits to our loyal customers.</p>
+        <p>With the launch of this extraordinary promotion, Xcel Airways is redefining affordability in air travel, empowering adventurers to explore their dream destinations without breaking the bank. Whether it's a spontaneous getaway or a meticulously planned journey, our $4 Fare Flash Sale ensures that every traveler can experience the thrill of flight at an unbeatable price.</p>
+        <p>"We are thrilled to introduce our $4 Fare Flash Sale, a testament to our unwavering dedication to delivering exceptional value and unparalleled savings to our customers," said [Spokesperson's Name], [Title] at Xcel Airways. "At Xcel Airways, we believe that everyone deserves the opportunity to discover the world, and with this groundbreaking promotion, we are making travel more accessible and affordable than ever before."</p>
+        <p><b>The $4 Fare Flash Sale is available for a limited time only and is exclusively accessible to new members signing up for the Xcelerate Awards Club. Membership in the Xcelerate Awards Club unlocks a world of benefits, including priority boarding, exclusive discounts, and personalized travel perks, enhancing the overall travel experience for our valued customers.</b></p>
+        <p>Don't miss out on this extraordinary opportunity to embark on your next adventure with Xcel Airways. Join the Xcelerate Awards Club today and seize the chance to secure your $4 fare to destinations beyond your wildest dreams.</p>
+        <p>For more information and to take advantage of our $4 Fare Flash Sale, <b><a href="/login">Log In to your Xcelerate Awards Club Account</a></b>.</p>
+        <img src="/static/xcellogo.png">
+    </div>
+{% endblock %}
